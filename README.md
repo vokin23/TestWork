@@ -2,12 +2,6 @@
 <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
 <h3 align="center">Computer science student, IT news writer from Russia 🇷🇺</h3>
 ﻿
-<h3 align="center">Тестовое задание</h3>
-
-1. Имеется список, положительных целых чисел(integer). Необходимо сформировать все
-триплеты [nums[i], nums[j], nums[k]], для которых выполняются следующие условия: i != j !=
-k и nums[i] * nums[j] * nums[k] == 0. Каждый триплет должен быть записан в качестве списка
-в выходную последовательность.
 
 2. На почту приходят 2 типа посылок: письма и посылки. Для регистрации письма
 указываются следующая информация:
