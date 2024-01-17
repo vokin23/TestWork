@@ -1,20 +1,17 @@
 from rest_framework import serializers
-from .models import Letter, Parcel, Products
+from .models import Letter, Parcel
 
 
-class LetterSerializer(serializers.ModelSerializer):
+class Parcel_LetterSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = '__all__'
+
+
+class LetterSerializer(Parcel_LetterSerializer):
     class Meta:
         model = Letter
-        fields = '__all__'
 
 
-class ParcelSerializer(serializers.ModelSerializer):
+class ParcelSerializer(Parcel_LetterSerializer):
     class Meta:
         model = Parcel
-        fields = '__all__'
-
-
-class ProductsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Products
-        fields = '__all__'

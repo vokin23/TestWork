@@ -14,17 +14,17 @@ class Letters_parcels(models.Model):
 
 
 class Letter(Letters_parcels):
-    LETTER_TYPE_CHOICES = (
+    letter_type_choices = (
         (1, 'Common'),
         (2, 'Registered'),
         (3, 'Valuable'),
-        (4, 'Express'),
+        (4, 'Express'),0
     )
-    LETTER_TYPE = models.IntegerField(choices=LETTER_TYPE_CHOICES)
-    LETTER_WEIGHT = models.DecimalField(max_digits=5, decimal_places=2)
+    letter_type = models.IntegerField(choices=letter_type_choices)
+    letter_weight = models.DecimalField(max_digits=5, decimal_places=2)
 
     class Meta:
-        db_table = 'product'
+        db_table = 'Letter'
         verbose_name = 'Письмо'
         verbose_name_plural = 'Письма'
 
@@ -43,24 +43,7 @@ class Parcel(Letters_parcels):
     payment_amount = models.DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:
-        db_table = 'product'
+        db_table = 'Parcel'
         verbose_name = 'Посылка'
         verbose_name_plural = 'Посылки'
 
-
-class Products(models.Model):
-    name = models.CharField(max_length=150, unique=True, verbose_name='Название')
-    slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name='URL')
-    description = models.TextField(blank=True, null=True, verbose_name='Описание')
-    image = models.ImageField(upload_to='goods_image', blank=True, null=True, verbose_name='Изоображение')
-    price = models.DecimalField(default=0.00, max_digits=7, decimal_places=2, verbose_name='Цена')
-    discount = models.DecimalField(default=0.00, max_digits=7, decimal_places=2, verbose_name='Скидка в %')
-    quantity = models.PositiveIntegerField(default=0, verbose_name='Количество')
-
-    class Meta:
-        db_table = 'product'
-        verbose_name = 'Товар'
-        verbose_name_plural = 'Товары'
-
-    def __str__(self):
-        return self.name

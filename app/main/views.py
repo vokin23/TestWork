@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Letter, Parcel, Products
-from .serializers import LetterSerializer, ParcelSerializer, ProductsSerializer
+from .models import Letter, Parcel
+from .serializers import LetterSerializer, ParcelSerializer
 
 
 class LetterViewSet(viewsets.ModelViewSet):
@@ -13,6 +13,3 @@ class ParcelViewSet(viewsets.ModelViewSet):
     serializer_class = ParcelSerializer
 
 
-class ProductList(viewsets.ModelViewSet):
-    queryset = Products.objects.all()
-    serializer_class = ProductsSerializer
