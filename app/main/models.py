@@ -18,7 +18,7 @@ class Letter(LettersParcels):
         (1, 'Common'),
         (2, 'Registered'),
         (3, 'Valuable'),
-        (4, 'Express'),0
+        (4, 'Express'),
     )
     letter_type = models.IntegerField(choices=letter_type_choices)
     letter_weight = models.DecimalField(max_digits=5, decimal_places=2)
@@ -46,4 +46,3 @@ class Parcel(LettersParcels):
         db_table = 'Parcel'
         verbose_name = 'Посылка'
         verbose_name_plural = 'Посылки'
-
