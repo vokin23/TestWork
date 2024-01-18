@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Letters_parcels(models.Model):
+class LettersParcels(models.Model):
     sender_full_name = models.CharField(max_length=100)
     recipient_full_name = models.CharField(max_length=100)
     sending_point = models.CharField(max_length=100)
@@ -13,7 +13,7 @@ class Letters_parcels(models.Model):
         return f'{self.sender_full_name} - {self.recipient_full_name}'
 
 
-class Letter(Letters_parcels):
+class Letter(LettersParcels):
     letter_type_choices = (
         (1, 'Common'),
         (2, 'Registered'),
@@ -29,7 +29,7 @@ class Letter(Letters_parcels):
         verbose_name_plural = 'Письма'
 
 
-class Parcel(Letters_parcels):
+class Parcel(LettersParcels):
     notify_phone = models.CharField(max_length=20)
     parcel_type_choices = (
         (1, 'Small packet'),
