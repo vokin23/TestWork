@@ -1,15 +1,34 @@
 import time
+from typing import List
 
 
-def find_triplets(nums):
+def find_triplets(src: List):
     result = set()
-    n = len(nums)
-    for i in range(n):
-        for j in range(i + 1, n):
-            for k in range(j + 1, n):
-                if nums[i] == 0 or nums[j] == 0 or nums[k] == 0:
-                    result.add(tuple(sorted([nums[i], nums[j], nums[k]])))
-    return [list(triplet) for triplet in result]
+    src_no_zeros = [num for num in src if num != 0]
+    zero_count = src.count(0)
+    if zero_count == 0:
+        return result
+
+    if zero_count >= 3:
+        result.add((0, 0, 0))
+
+    if zero_count >= 2:
+        for num in set(src_no_zeros):
+            result.add((num, 0, 0))
+            result.add((0, num, 0))
+            result.add((0, 0, num))
+
+    if zero_count >= 1:
+        for n, num in enumerate(src_no_zeros):
+            for num2 in src_no_zeros[n+1:]:
+                result.add((0, num, num2))
+                result.add((0, num2, num))
+                result.add((num2, 0, num))
+                result.add((num, 0, num2))
+                result.add((num, num2, 0))
+                result.add((num2, num, 0))
+
+    return result
 
 
 if __name__ == "__main__":
